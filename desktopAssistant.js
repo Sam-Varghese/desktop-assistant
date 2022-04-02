@@ -8,6 +8,7 @@ import chalk from "chalk";
 
 var runCount = 0;
 
+//* Function to keep a check on the battery level, and send notifications in case of low battery, or charged battery
 export async function BatteryAssistant() {
     runCount++;
     if (runCount % 5 == 0) {
@@ -21,13 +22,13 @@ export async function BatteryAssistant() {
     if (!batteryStatus.status) {
         Notifier(batteryStatus);
     }
+    // To print the status of battery
     await StatusPrinter(batteryStatus, runCount);
-    console.log(`Starting set interval`);
 }
 
 export async function processUserInput() {
     console.clear();
-    await FigletText(`Jarvis`);
+    await FigletText(`Desk. Assist.`);
     let taskSelected = await input.checkboxes(`Select the task: `, [
         `Initialize programs + battery checker`,
         `Initialize programs`,
@@ -35,8 +36,7 @@ export async function processUserInput() {
         `Shutdown machine`,
         `Restart machine`,
         `Execute powershell commands`,
-        `Execute python commands`,
-        `Execute node js commands`
+        `Execute python commands`
     ]);
     switch (taskSelected[0]) {
         case `Initialize programs + battery checker`:
