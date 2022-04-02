@@ -32,6 +32,6 @@
 
 - [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the [repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories).
 - Now [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the repository.
-- Execute [desktopAssistant.js](./desktopAssistant.js) (Execution command: `npm run activate`).
+- Execute the command `npm run activate` to install all necessary packages, and start the application.
 
 ---
