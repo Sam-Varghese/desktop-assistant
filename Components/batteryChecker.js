@@ -30,6 +30,7 @@ export default async function BatteryChecker() {
                 message: `${
                     batteryLeft * 100
                     }% is the charge left in the laptop. Kindly unplug the charger to maintain the health of the machine.`,
+                title: "Battery charged",
                 icon: "Components/Notifications/icons/batteryCharged.png"
             });
         } else {
@@ -37,6 +38,7 @@ export default async function BatteryChecker() {
                 status: true,
                 batteryLeft: batteryLeft * 100,
                 message: "Battery level is normal. Awesome work sir!",
+                title: "Normal battery"
             });
         }
     });
