@@ -36,7 +36,7 @@ export async function processUserInput() {
         `Restart machine`,
         `Execute powershell commands`,
         `Execute python commands`,
-        `Execute node js commands`,
+        `Execute node js commands`
     ]);
     switch (taskSelected[0]) {
         case `Initialize programs + battery checker`:
@@ -79,23 +79,6 @@ export async function processUserInput() {
                 { shell: "python.exe" },
                 (error, stdout, stderr) => {
                     if (error) {
-                        console.log(stderr);
-                    } else {
-                        console.log(stdout);
-                    }
-                }
-            );
-            break;
-        case `Execute node js commands`:
-            const nodeCommand = await input.text(
-                `Enter the command you wanna execute: `
-            );
-            child_process.exec(
-                nodeCommand,
-                { shell: "node" },
-                (error, stdout, stderr) => {
-                    if (error) {
-                        throw error;
                         console.log(stderr);
                     } else {
                         console.log(stdout);
