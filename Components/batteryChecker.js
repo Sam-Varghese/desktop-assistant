@@ -9,10 +9,11 @@ This program resolves a promise with false as the status if the battery level (b
 Else it will resolve the promise with a status of true
 */
 export default async function BatteryChecker() {
+    let batteryCharging = await isCharging();
     return new Promise(async (resolve, reject) => {
         const batteryLeft = await batteryLevel();
-        const charging = await isCharging();
-        if (batteryLeft <= 0.35 && !isCharging()) {
+        if (batteryLeft <= 0.35 && !batteryCharging) {
+            console.log(`Battery low`);
             resolve({
                 status: false,
                 batteryLeft: batteryLeft * 100,
@@ -22,14 +23,13 @@ export default async function BatteryChecker() {
                 title: "Battery low",
                 icon: "Components/Notifications/icons/batteryLow.png"
             });
-        } else if (batteryLeft >= 0.90 && isCharging) {
+        } else if (batteryLeft >= 0.36 && batteryCharging) {
             resolve({
                 status: false,
                 batteryLeft: batteryLeft * 100,
-                message: `Only ${
+                message: `${
                     batteryLeft * 100
-                    }% battery is left in the laptop. Kindly insert the charger to maintain the laptop's health.`,
-                title: "Battery charged",
+                    }% is the charge left in the laptop. Kindly unplug the charger to maintain the health of the machine.`,
                 icon: "Components/Notifications/icons/batteryCharged.png"
             });
         } else {
