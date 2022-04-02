@@ -23,7 +23,7 @@ export default async function BatteryChecker() {
                 title: "Battery low",
                 icon: "Components/Notifications/icons/batteryLow.png"
             });
-        } else if (batteryLeft >= 0.36 && batteryCharging) {
+        } else if (batteryLeft >= 0.9 && batteryCharging) {
             resolve({
                 status: false,
                 batteryLeft: batteryLeft * 100,
